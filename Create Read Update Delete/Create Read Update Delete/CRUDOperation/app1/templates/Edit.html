@@ -21,52 +21,13 @@
     <style>
         * {
             font-family: sans-serif;
-            /* Change your font family */
         }
 
-        /* .content-table {
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 0.9em;
-            min-width: 400px;
-            border-radius: 5px 5px 0 0;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .content-table thead tr {
-            background-color: #009879;
-            color: #ffffff;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        .content-table th,
-        .content-table td {
-            padding: 12px 15px;
-        }
-
-        .content-table tbody tr {
-            border-bottom: 1px solid #dddddd;
-        }
-
-        .content-table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
-        }
-
-        .content-table tbody tr:last-of-type {
-            border-bottom: 2px solid #009879;
-        }
-
-        .content-table tbody tr.active-row {
-            font-weight: bold;
-            color: #009879;
-        } */
+       
         table {
             border-collapse: collapse;
             table-layout: fixed;
-            /* width: 100%; */
-            /* padding-right: 1rem; */
+           
            
         }
 
@@ -111,7 +72,7 @@
 
         <form method="POST" >
             {% csrf_token %}
-            <table> <!--content-table-->
+            <table> 
                 <thead>
                     <tr>
                         <td>Employee ID</td>
@@ -131,7 +92,6 @@
                     </tr>
                     <tr>
                         <td>Department</td>
-                        <!-- <td><input type="text" name="department" value="{{EmpModel.department}}"></td> -->
                         <td>
                                 <input name="department" id="DEPARTMENT" placeholder="enter department" list="departments" value="{{EmpModel.department}}">
                                 <datalist id="departments">
@@ -144,7 +104,6 @@
                     </tr>
                     <tr>
                         <td>Designation</td>
-                        <!-- <td><input type="text" name="designation" value="{{EmpModel.designation}}"></td> -->
                         <td>
                             <input name="designation" id="DESIGNATION" placeholder="Enter designation" list="designations" value="{{EmpModel.designation}}">
                             <datalist id="designations">
@@ -165,13 +124,8 @@
                     </tr>
                     <tr>
                         <td>Status</td>
-                        <!-- <td><input type="text" name="status" value="{{EmpModel.status}}"></td> -->
                         <td id="STATUS">
-                            <!-- <input name="status" id="STATUS" placeholder="Enter STATUS" list="status" value="{{EmpModel.status}}">
-                            <datalist id="status">
-                                <option value="active"></option>
-                                <option value="inactive"></option>
-                            </datalist> -->
+                          
                                 {% if EmpModel.status == 'active' %}
                                     Active:<input type="radio" value="active" name="status" checked>
                                     Inactive: <input type="radio" value="inactive" name="status">
@@ -183,13 +137,8 @@
                     </tr>
                     <tr>
                         <td>Gender</td>
-                        <!-- <td><input type="text" name="gender" value="{{EmpModel.gender}}"></td>  -->
                         <td>
-                            <!-- <input name="gender" id="GENDER" placeholder="Enter Gender" list="genders" value="{{EmpModel.gender}}">
-                            <datalist id="genders">
-                                <option value="Male"></option>
-                                <option value="Female"></option>
-                            </datalist>  -->
+                           
                                 {% if EmpModel.gender == 'male' %}
                                     <input type="radio" value="male" name="gender" checked>male
                                     <input type="radio" value="female" name="gender" >female
@@ -203,7 +152,6 @@
                     </tr>
                     <tr>
                         <td>
-                            <!-- <input type="submit" value="update record"> -->
                             <button type="submit" class="btn btn-success" value="update record">
                                 <i class="fa-solid fa-database"> Update Value</i>
                             </button>
