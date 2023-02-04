@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4a3a231a50.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            font-family: sans-serif;
+            /* Change your font family */
+        }
+
+        /* .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        } */
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+            /* width: 100%; */
+            /* padding-right: 1rem; */
+           
+        }
+
+        th {
+            border: 1px solid;
+            border-bottom-color: #3c4fe0;
+            border-left: 0px;
+            border-right: 0px;
+            border-top: 0px;
+            color:gray;
+            width: 200px;
+        }
+
+
+        th,
+        td {
+            text-align: left;
+            padding: 2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            
+            
+        }
+        tr{
+            border-bottom: 1px solid;
+            border-color: #D3D3D3;
+        }
+    </style>
+    <script>
+        document.querySelector("input[type='radio'][name=status]:checked").value;
+
+    </script>
+</head>
+
+<body>
+    <center>
+        <div class="jumbotron">
+            <h1>EDIT CRUD creation</h1>
+            <h1>Django webdevelopement</h1>
+            <hr />
+        </div>
+
+        <form method="POST" >
+            {% csrf_token %}
+            <table> <!--content-table-->
+                <thead>
+                    <tr>
+                        <td>Employee ID</td>
+                        <td><input type="text" name="id" value="{{EmpModel.id}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td><input type="text" name="firstname" value="{{EmpModel.firstname}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Middle Name</td>
+                        <td><input type="text" name="middlename" value="{{EmpModel.middlename}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td><input type="text" name="lastname" value="{{EmpModel.lastname}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <!-- <td><input type="text" name="department" value="{{EmpModel.department}}"></td> -->
+                        <td>
+                                <input name="department" id="DEPARTMENT" placeholder="enter department" list="departments" value="{{EmpModel.department}}">
+                                <datalist id="departments">
+                                    <option value="accounts"></option>
+                                    <option value="IT"></option>
+                                    <option value="Biling"></option>
+                                </datalist>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Designation</td>
+                        <!-- <td><input type="text" name="designation" value="{{EmpModel.designation}}"></td> -->
+                        <td>
+                            <input name="designation" id="DESIGNATION" placeholder="Enter designation" list="designations" value="{{EmpModel.designation}}">
+                            <datalist id="designations">
+                                <option value="backend-developer"></option>
+                                <option value="frontend-developer"></option>
+                                <option value="fullstack-developer"></option>
+                                <option value="blockchain-developer"></option>
+                            </datalist>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td><input type="text" name="location" value="{{EmpModel.location}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Salary</td>
+                        <td><input type="text" name="salary" value="{{EmpModel.salary}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <!-- <td><input type="text" name="status" value="{{EmpModel.status}}"></td> -->
+                        <td id="STATUS">
+                            <!-- <input name="status" id="STATUS" placeholder="Enter STATUS" list="status" value="{{EmpModel.status}}">
+                            <datalist id="status">
+                                <option value="active"></option>
+                                <option value="inactive"></option>
+                            </datalist> -->
+                                {% if EmpModel.status == 'active' %}
+                                    Active:<input type="radio" value="active" name="status" checked>
+                                    Inactive: <input type="radio" value="inactive" name="status">
+                                {%else%}
+                                    Active: <input type="radio" value="active" name="status" >
+                                    Inactive: <input type="radio" value="inactive" name="status" checked>
+                                {%endif%}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <!-- <td><input type="text" name="gender" value="{{EmpModel.gender}}"></td>  -->
+                        <td>
+                            <!-- <input name="gender" id="GENDER" placeholder="Enter Gender" list="genders" value="{{EmpModel.gender}}">
+                            <datalist id="genders">
+                                <option value="Male"></option>
+                                <option value="Female"></option>
+                            </datalist>  -->
+                                {% if EmpModel.gender == 'male' %}
+                                    <input type="radio" value="male" name="gender" checked>male
+                                    <input type="radio" value="female" name="gender" >female
+                                {%else%} 
+                                    <input type="radio" value="female" name="gender" checked>female
+                                    <input type="radio" value="male" name="gender">male
+                                {%endif%} 
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- <input type="submit" value="update record"> -->
+                            <button type="submit" class="btn btn-success" value="update record">
+                                <i class="fa-solid fa-database"> Update Value</i>
+                            </button>
+                        </td>
+                        <td>
+                            {% if messages %}
+                            {% for mess in messages %}
+                            <b style="color:green;"> {{mess}} </b>
+                            {% endfor %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <button class="btn btn-success"><a href="{% url 'app1:showemp' %}" style="color:red;">Home Page</a></button>
+
+        </form>
+
+    </center>
+</body>
+
+</html>
